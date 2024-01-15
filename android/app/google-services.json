@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "541166119884",
+    "project_id": "nowcare4u-b1800",
+    "storage_bucket": "nowcare4u-b1800.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541166119884:android:0649a113c88d9681688b69",
+        "android_client_info": {
+          "package_name": "com.example.assignment_nowcare4u"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGrQHK_o5G4hU33okhmx_E47kNZrV638o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
