@@ -51,6 +51,14 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
+    signingConfigs {
+    debug {
+        keyAlias "upload"
+        keyPassword "JoySarkar@456"
+        storeFile  file('upload-keystore.jks')
+        storePassword 'JoySarkar@456'
+    }
+}
 
     buildTypes {
         release {

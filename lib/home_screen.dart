@@ -1,11 +1,13 @@
 import 'package:assignment_nowcare4u/auth/api/google_signIn_api.dart';
 import 'package:assignment_nowcare4u/auth/screens/sign_up_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final String email;
+  final String name;
+  const HomeScreen({super.key, required this.email, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,12 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.black, fontSize: 24, fontWeight: FontWeight.w600),
           ),
           Text(
-            "Login with - ${FirebaseAuth.instance.currentUser!.email}",
+            "Login with - $email",
+            style: const TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            "Login with - $name",
             style: const TextStyle(
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
           ),
@@ -62,13 +69,15 @@ class HomeScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            await signOut();
-                            // ignore: use_build_context_synchronously
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignupScreen(),
-                                ));
+                            GoogleSignInAccount? user = await logOut();
+                            print("hiiiiii");
+                            if (user == null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignupScreen()));
+                            }
                           },
                           child: Container(
                             padding: const EdgeInsets.all(14),

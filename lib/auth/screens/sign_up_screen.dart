@@ -1,6 +1,7 @@
 import 'package:assignment_nowcare4u/auth/api/google_signIn_api.dart';
 import 'package:assignment_nowcare4u/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -13,27 +14,30 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 98, 238, 217),
+      backgroundColor: const Color.fromARGB(255, 98, 238, 217),
       appBar: AppBar(
         title: const Text(
           "nowcare4u app",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color.fromARGB(255, 12, 12, 12),
+        backgroundColor: const Color.fromARGB(255, 12, 12, 12),
       ),
       body: Center(
           child: ElevatedButton(
               onPressed: () async {
-                bool isLogin = await signInWithGoogle();
-                if (isLogin) {
-                  // ignore: use_build_context_synchronously
+                GoogleSignInAccount? user = await logIn();
+
+                if (user != null) {
+                  print(user.id);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => HomeScreen(
+                          email: user.email,
+                          name: user.displayName!,
+                        ),
                       ));
                 } else {
-                  // ignore: use_build_context_synchronously
                   showDialog(
                     context: context,
                     builder: (ctx) => AlertDialog(
