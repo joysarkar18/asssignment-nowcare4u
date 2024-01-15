@@ -58,7 +58,29 @@ class _SignupScreenState extends State<SignupScreen> {
                   );
                 }
               },
-              child: Text("google sign in"))),
+              child: SizedBox(
+                width: 160,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/google-logo-9827.png",
+                      height: 30,
+                      width: 30,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "google sign in",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                ),
+              ))),
     );
   }
 }
