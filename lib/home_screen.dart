@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
           ),
           Text(
-            "Login with - $name",
+            "Name - $name",
             style: const TextStyle(
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
           ),
